@@ -37,7 +37,7 @@ PYTHONPATH=src python -m onfly_report --input data/reservas_hoteis.csv \
  
 No PowerShell, troque a variável por `$env:PYTHONPATH="src"` antes dos dois comandos do CLI.
  
-Use python `>=3.11`.
+Use python `>=3.11` (Utilizei o 3.14).
  
 ## Resultado do pytest
  
@@ -53,3 +53,10 @@ São os 5 testes que já existiam mais 12 novos que eu criei, que ficam em arqui
 - `test_status_policy.py`: 3 testes (um por status).
 - `test_reservation_repository.py`: 1 teste (lê as 300 reservas do arquivo).
 - `test_report_builder.py`: 1 teste (desempate do ranking por *hotel_id*).
+
+Novos testes criados após revisão com IA:
+
+- `test_money_rounding.py`: 9 testes (arredondamento half-up, soma exata sem arredondar por linha, média sobre o total exato e formato do dinheiro).
+- `test_aggregations.py`: 13 testes (`by_month` pelo mês do check-in e em ordem crescente; `top_hotels` só com CONFIRMED, ranking por valor em BRL, corte do `--top` e desempate por *hotel_id*).
+- `test_readme_sample_and_dataset.py`: 9 testes (confere a amostra e o dataset completo com os valores do README).
+- `helpers_extra.py`: funções de apoio dos novos testes, sem alterar o `helpers.py` fornecido.
